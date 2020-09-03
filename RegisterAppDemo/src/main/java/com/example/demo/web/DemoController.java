@@ -3,21 +3,21 @@ package com.example.demo.web;
 import com.example.demo.domain.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class DemoController {
 
     @Autowired
     private UserRepository userRepo;
 
     @GetMapping("/")
-    public String root(ModelMap model){
+    public String root ( ModelMap model ){
         List<User> allUsers = userRepo.findAll();
 
         User user = new User();
@@ -27,7 +27,7 @@ public class DemoController {
         return "register";
     }
 
-    @PostMapping
+    @PostMapping("/")
     public String rootPost(User user){
         userRepo.save(user);
 
