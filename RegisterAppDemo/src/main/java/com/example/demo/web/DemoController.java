@@ -16,7 +16,7 @@ public class DemoController {
     @Autowired
     private UserRepository userRepo;
 
-    @GetMapping("/")
+    @GetMapping("/register")
     public String root ( ModelMap model ){
         List<User> allUsers = userRepo.findAll();
 
@@ -27,11 +27,11 @@ public class DemoController {
         return "register";
     }
 
-    @PostMapping("/")
+    @PostMapping("/register")
     public String rootPost(User user){
         userRepo.save(user);
 
-        return "redirect:/";
+        return "redirect:/register";
 
     }
 
